@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title>{{ post.title }}</title>
+    </head>
+    <body>
+        <h1>POST DETAILS</h1>
+        <h4>POST TITLE : {{ post.title }} </h4>
+        <h4>CREATED AT : {{ post.created_at }}</h4>
+        <h4>CONTENT : {{ post.content }} </h4>
+
+        <a href="{% url 'post_list' %}">Back</a>
+    </body>
+</html>
