@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>All Blog Post</title>
+    </head>
+    <body>
+      
+        <h2>All Blog Posts</h2>
+<ul>
+    {% for post in posts %}
+    <li>
+        <h4>POST TITLE : {{ post.title }} </h4>
+        <h4>CREATED AT : {{ post.created_at }}</h4>
+        <h4>CONTENT : {{ post.content }} </h4>
+
+        </li>
+        {% empty %}
+        <p>No posts available.</p>
+        {% endfor %}
+        </ul>
+        <a href="{% url 'post_create' %}">Back</a>
+    </body>
+</html>

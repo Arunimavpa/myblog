@@ -1,11 +1,17 @@
 from django.shortcuts import render
-from.models import Post
+from .models import Create_Post
 
 # Create your views here.
-def post_list(request):
-    posts= Post.objects.all()
-    return render(request, 'posts/post_list.html',{'posts':posts})
+def post_create(request):
+    if request.method == "POST":
+        title = request.POST.get('title')
+        content = request.POST.get('content')   # matches form input name
+        create_obj = Create_Post(title=title, content=content)  # <-- use model here
+        create_obj.save()
+        return render(request, 'post_create.html', {"message": "Post created successfully!"})
+    return render(request, 'post_create.html')
 
-def post_details(request,id):
-    post=Post.objects.get(id=id)
-    return render(request, 'posts/post_details.html',{'post':post}) 
+def post_list(request):
+    posts=Create_Post.objects.all()
+    return render(request, 'post_list.html',{'posts':posts}) 
+
